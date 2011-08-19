@@ -7,6 +7,7 @@
 <script src="development-bundle/jquery-1.6.2.js" type="text/javascript"></script>
 <script src="development-bundle/ui/jquery-ui-1.8.15.custom.js" type="text/javascript"></script>
 
+
 <!--<script src="development-bundle/ui/jquery.ui.mouse.js" type="text/javascript"></script>
 <script src="development-bundle/ui/jquery.ui.position.js" type="text/javascript"></script>
 <script src="development-bundle/ui/jquery.ui.draggable.js" type="text/javascript">
@@ -15,7 +16,6 @@
 
 </script>-->
 <link href="css/blitzer/jquery-ui-1.8.15.custom.css" type="text/css" rel="stylesheet" media="all" />
-
 
 
 
@@ -67,6 +67,9 @@ $('#prince_structure').click(function(){
 }
 );
 //$('#prince_structure').click($('#prince_processes').show());
+
+$("#executive_job_description").markItUp(mySettings);
+
 });/* End of $( or document ready */
 
 </script>
@@ -89,7 +92,7 @@ $('#prince_structure').click(function(){
 
 </div><!-- end of desktop division -->
 
-
+<div id="executive_job_description"></div>
 
 </body>
 </html>
