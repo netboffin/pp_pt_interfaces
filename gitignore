@@ -1,0 +1,10 @@
+#directories to be ignored by git
+
+#ignore the tinymce directory
+tinymce/
+
+#ignore the jquery_etherpad directory
+jquery_etherpad/
+
+#ignore the spellchecker directory
+spellchecker/
