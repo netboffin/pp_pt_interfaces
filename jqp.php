@@ -6,7 +6,8 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script> 
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script> 
- <link rel="stylesheet" href="../development-bundle/themes/blitzer/jquery-ui-1.8.15.custom.css" type="text/css" /> 
+<link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/ui-darkness/jquery-ui.css"/>
+ 
 <style>
 nav{height:100%;width:150px;margin-right:10px;}
 #desktop{
@@ -22,21 +23,8 @@ nav{height:100%;width:150px;margin-right:10px;}
 		
 /*windows */
 .window{border:1px black solid;background:white;}
-.drag-handle{color:green;background-color:white;display:block;}
-.ui-icon-closethick{
-height:16px;
-width:16px;
-background-image:url(development-bundle/themes/blitzer/images/ui-icons_cc0000_256x240.png);
- /*your location of the image may differ*/
-background-position: -96px -128px;
-float:right;
- }
-
-
-
-
-
-
+.drag-handle{background-color:red;display:block;}
+.ui-icon{display:inline;float:right;}
 </style>
 <script language="javascript" type="text/javascript">
 $(function(){
@@ -46,8 +34,8 @@ $('p').append("Hello World");
 $('.window').each(function(n){
 	
 $(this).prepend("<span class='drag-handle'>" + $(this).attr("title") +
-	 "<a class='ui-dialog-titlebar-close ui-corner-all' href='#' role='button'>" +
-	 "<span class='ui-icon ui-icon-closethick'></span>" +
+	 "<a href='#' role='button'>" +
+	 "<span class='icontester ui-icon ui-icon-closethick'></span>" +
 "</a></span>");
 
 	}); // end of each
@@ -63,7 +51,15 @@ $(this).prepend("<span class='drag-handle'>" + $(this).attr("title") +
 	
 }); // end of document ready stack: {group: $(".window"), min: 1}, opacity: 0.8
 
-	
+	$(function() {
+		$(".icontester")
+		.mouseenter(function() {
+			$(this).addClass('ui-state-hover');
+		})
+		.mouseleave(function() {
+			$(this).removeClass("ui-state-hover");
+		});
+	});
 
 
 
@@ -72,6 +68,7 @@ $(this).prepend("<span class='drag-handle'>" + $(this).attr("title") +
 </head>
 
 <body>
+<span id="icontest" class="ui-icon ui-icon-closethick"></span>
 <div id="desktop">
 <div id="princeStructure" class="window" title="Prince Structure">
 
