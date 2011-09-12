@@ -150,7 +150,8 @@ Steps <a href="#" onclick="$('#appoint_exec_steps').toggle();">show steps</a>
 <div id="documents">
 Documents<a href="#" onclick="$('#prince_process_startup_su1_docs').toggle();">Show Documents</a>
 <ul id="prince_process_startup_su1_docs">
-<li><a href="protoplan_documents/exec_role_doc.php" target="_blank">Executive Role doc</a></li>
+<li><a href="http://localhost/pp_pt_interfaces/protoplan_documents/index.php?doc_id=exec_role" target="_blank">Executive Role doc</a></li>
+<li><a href="http://localhost/pp_pt_interfaces/protoplan_documents/index.php?doc_id=pm_role" target="_blank">Executive Role doc</a></li>
 <li>Executive Appointment Checklist</li>
 <li>Supporting Files</li>
 <li></li>

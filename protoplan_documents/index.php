@@ -47,8 +47,12 @@ tinyMCE.init({
 
 <script>
   $(document).ready(function(){
+  
+	
     $("#example").treeview();
 	$("#example2").treeview();
+	
+	
   });
   function get_content(content_to_get){
   	/* 
@@ -57,10 +61,10 @@ tinyMCE.init({
 		and return the 
 	*/
 	//$('#main_content').load('document_templates/executive_role_template.php');
-	ajaxLoad();
+	ajaxLoad(content_to_get);
   }
   
-  function ajaxLoad() {
+  function ajaxLoad(doc_id) {
     var ed = tinyMCE.get('main_content');
 	//ed.load('document_templates/executive_role_template.php');
     // Do you ajax call here, window.setTimeout fakes ajax call
@@ -69,10 +73,11 @@ tinyMCE.init({
         ed.setProgressState(0); // Hide progress
         ed.setContent('HTML content that got passed from server.');
     }, 3000);*/
-	$.get("document_templates/executive_role_template.php", function(content) { 
+	
+	$.get("document_templates/"+ doc_id + ".php", function(content) { 
     // if you have one tinyMCE box on the page:
-    ed.setContent(content);
-});
+    		ed.setContent(content);
+	});
 //$.get("document_templates/executive_role_template.php", tinyMCE.activeEditor.setContent);
 }
   
@@ -114,7 +119,8 @@ textarea{width:100%;}
 				<li><span class="file">Daily Log</span></li>
 				<li class="closed"><span class="folder">Executive Role and Appointment</span>
 				<ul>
-					<li><span class="file"><a href="#" onclick="get_content('executive_role');return false;" >Executive Role</a></span></li>
+					<li><span class="file"><a href="#" onclick="get_content('exec_role');return false;" >Executive Role</a></span></li>
+					<li><span class="file"><a href="#" onclick="get_content('pm_role');return false;" >Project Manager Role</a></span>
 					<li><span class="file">Executive Appointment</span></li>
 					<li><span class="file">Executive Checklist</span></li>
 				</ul></li>	
@@ -181,6 +187,9 @@ textarea{width:100%;}
 <div id="document_editor">
 <form id="content_holder" >
 <textarea id="main_content" name="main_content" cols="80" rows="60" >
+<?php 
+include("document_templates/".$_GET["doc_id"].".php");
+?>
 </textarea>
 </form>
 </div><!-- end of document editor -->
