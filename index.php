@@ -6,8 +6,6 @@
 <!-- Links to jQuery ui theme -->
 <script src="development-bundle/jquery-1.6.2.js" type="text/javascript"></script>
 <script src="development-bundle/ui/jquery-ui-1.8.15.custom.js" type="text/javascript"></script>
-
-
 <!-- 
 <script src="development-bundle/ui/jquery.ui.mouse.js" type="text/javascript"></script>
 <script src="development-bundle/ui/jquery.ui.position.js" type="text/javascript"></script>
@@ -17,9 +15,6 @@
 
 </script>-->
 <link href="css/blitzer/jquery-ui-1.8.15.custom.css" type="text/css" rel="stylesheet" media="all" />
-
-
-
 <style type="text/css">
 nav{height:100%;width:150px;margin-right:10px;}
 #desktop{
@@ -150,8 +145,8 @@ Steps <a href="#" onclick="$('#appoint_exec_steps').toggle();">show steps</a>
 <div id="documents">
 Documents<a href="#" onclick="$('#prince_process_startup_su1_docs').toggle();">Show Documents</a>
 <ul id="prince_process_startup_su1_docs">
-<li><a href="http://localhost/pp_pt_interfaces/protoplan_documents/index.php?doc_id=exec_role" target="_blank">Executive Role doc</a></li>
-<li><a href="http://localhost/pp_pt_interfaces/protoplan_documents/index.php?doc_id=pm_role" target="_blank">Executive Role doc</a></li>
+<li><a href="protoplan_documents/index.php?doc_id=exec_role" target="_blank">Executive Role Document</a></li>
+<li><a href="protoplan_documents/index.php?doc_id=pm_role" target="_blank">Project Manager Role Document</a></li>
 <li>Executive Appointment Checklist</li>
 <li>Supporting Files</li>
 <li></li>
