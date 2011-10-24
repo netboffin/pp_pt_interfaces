@@ -20,11 +20,31 @@
 
 <!-- Document Editor Scripts -->
 <script type="text/javascript" src="http://jquery.bassistance.de/treeview/jquery.treeview.js"></script>
-<script type="text/javascript" src="../tinymce/jscripts/tiny_mce/tiny_mce.js" ></script >
+<script type="text/javascript" src="../tinymce/jscripts/tiny_mce/tiny_mce.js" ></script>
 <!-- End of Document Editor Scripts -->
+<!-- Checklists -->
+<script type="text/javascript" src="../spreadsheet/jquery.sheet.js"></script>
+
+ <!--Required-->
+        <link rel="stylesheet" type="text/css" href="../spreadsheet/jquery.sheet.css" />
+        <script type="text/javascript" src="../spreadsheet/jquery.sheet.js">
+        </script>
+		<script type="text/javascript" src="../spreadsheet/parser.js"></script>
+       
+<!--/Required-->
 
 
 
+<script type="text/javascript">
+ $('#jQuerySheet0').sheet({
+                    title: 'Spreadsheet Playground',
+                    /*inlineMenu: inlineMenu($.sheet.instance),*/
+                    urlGet: '../spreadsheet/sheets/numberstesting.html',
+					/*autoFiller: true*/
+                });
+</script>
+
+<!-- End of Checklists -->
 <!-- set up tinyMCE -->
 <script type="text/javascript" >
 tinyMCE.init({
@@ -85,20 +105,44 @@ $('#document_view_link').click(function() { // bind click event to link
 </script>
 <style>
 #desktop{
-
 		min-height:85%;
 		width:100%;
 		border:1px dashed #FF9933;
-		background:#006666;
+		background:#2C4359;
+		background: url("images/ui-bg_dots-small_35_35414f_2x2.png") repeat scroll 50% 50% #35414F;
+}
+html{
+			height:100%
 		}
-		html{height:100%}
-		body{height:100%}
-		#tabs{height:95%;}
-#prince_view{height:100%;}
+body{
+			height:100%
+		}
+#tabs{
+			height:95%;
+		}
+#prince_view{
+			height:100%;
+			}
+</style>
 
+<link rel='stylesheet' type='text/css' href='fullcalendar-1.5.2/fullcalendar/fullcalendar.css' />
+<link rel='stylesheet' type='text/css' href='fullcalendar-1.5.2/fullcalendar/fullcalendar.print.css' media='print' />
+
+<style type='text/css'>
+
+	body {
+		margin-top: 2px;
+		text-align: center;
+		font-size: 14px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		}
+
+	#calendar {
+		/*width: 1000px;*/
+		margin: 0 auto;
+		}
 
 </style>
-	
 		
 
 
@@ -112,6 +156,8 @@ $('#document_view_link').click(function() { // bind click event to link
 		<li><a href="#document_view">Documents</a></li>
 		<li><a href="#log_view">Logs</a></li>
 		<li><a href="#checklist_view">Checklists</a></li>
+		<li><a href="#plans_view">Plans</a></li>
+		<li><a href="#calendar_tab">Calendar</a></li>
 		<li><a href="#people_view">People</a></li>
 </ul>
 
@@ -170,12 +216,102 @@ Documents<a href="#" onclick="$('#prince_process_startup_su1_docs').toggle();">S
 	<h1>Logs View</h1>
 </div>
 <div id="checklist_view">
-</div>
 
+<div id="jQuerySheet0" class="jQuerySheet" style="height:450px;">
+ </div>
+
+</div>
+<div id="plans_view">
+<h1>Plans Tab</h1>
+<q>"A goal without a plan is just a wish." - Antoine de Saint-Exupery</q>
+<p>
+What we'll have here are:
+<ul><li>A way to view all the plans of a project</li>
+<li>A way of viewing an individual plan</li>
+<li>The Prince page will link directly to individual plans</li> 
+</ul>
+<p>Firstly, PRINCE2 defines three levels of plan: Project, Stage and Team.</p>
+<p>PRINCE2 prescribes the technique of Product Based Planning, which the manual describes in some detail. This does not mean, however, that the Product Breakdown Structure, Product Flow Diagrams and Product Descriptions resulting from that activity are the only constituents of the plan. Rather, it moves the emphasis of planning away from conventional tasks and towards Products (i.e. deliverable things). </p>
+</p>
+<p>Exception Plans
+
+An Exception Plan is required whenever part of the project is predicted to go outside it's tolerances. People encountering the concept of Exception Plan for the first time sometimes think that it's a different type of plan from a Project or Stage Plan. In fact it's just a potential replacement for the plan that covers that part of the project that is in exception. So if a Stage is going to exceed its tolerances, your Exception Plan will replace the Stage Plan and be of the same design. It's intended to cover a different time period however: from "now" to the end of the orginal planning period. </p>
+</div>
+<div id="calendar_tab">
+<div id='calendar'></div>
+</div>
 <div id="people_view" class="tabdiv">
 <h2>People</h2>
 Shows the people related to the project
 </div><!-- end of people_view -->
 </div> <!-- end of tabs -->
+<script type='text/javascript' src='fullcalendar-1.5.2/fullcalendar/fullcalendar.min.js'></script>
+	<script type='text/javascript'>
+
+	$(document).ready(function() {
+	
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,basicWeek,basicDay'
+			},
+			editable: true,
+			events: [
+				{
+					title: 'All Day Event',
+					start: new Date(y, m, 1)
+				},
+				{
+					title: 'Long Event',
+					start: new Date(y, m, d-5),
+					end: new Date(y, m, d-2)
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: new Date(y, m, d-3, 16, 0),
+					allDay: false
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: new Date(y, m, d+4, 16, 0),
+					allDay: false
+				},
+				{
+					title: 'Meeting',
+					start: new Date(y, m, d, 10, 30),
+					allDay: false
+				},
+				{
+					title: 'Lunch',
+					start: new Date(y, m, d, 12, 0),
+					end: new Date(y, m, d, 14, 0),
+					allDay: false
+				},
+				{
+					title: 'Birthday Party',
+					start: new Date(y, m, d+1, 19, 0),
+					end: new Date(y, m, d+1, 22, 30),
+					allDay: false
+				},
+				{
+					title: 'Click for Google',
+					start: new Date(y, m, 28),
+					end: new Date(y, m, 29),
+					url: 'http://google.com/'
+				}
+			]
+		});
+		
+	});
+
+</script>
 </body>
 </html>
