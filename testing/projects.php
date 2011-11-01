@@ -3,27 +3,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
 <title>Projects</title>
-<style>
-dl{
-	font-family:Arial, Helvetica, sans-serif;
-	width:500px;margin-left:50px;
-	border-width:0px 1px 0px 1px;
-	border-color:#ccc;
-	border-style:dotted;	
-	}
-dt{padding-left:5px;}
-dd{padding-bottom:5px;}
-dd{padding-left:10px;font-size:small;border-bottom:1px #CCCCCC dotted;margin:15px 0px 5px 0px;}
-
-/* I want the first dt to have a border on top */
-div{clear:both;}
-</style>
-
 <script src="../js/jquery-1.6.2.min.js" type="text/javascript"></script>
 <script src="jquery_pagination/src/jquery.pagination.js"></script>
 <link href="jquery_pagination/src/pagination.css"  type="text/css" rel="stylesheet" />
 <script src="Projects.js" type="text/javascript"></script>
-
 <script type="text/javascript">
 
   /**
@@ -93,7 +76,7 @@ So start_point = page_index * 6
 
 	for( i =start_point;i<=stop_point;i++)
 	{
-		content += "<tr><td>" + i +"</td><td>" +  projects[i][0] + "</td><td>" + projects[i][1] + "</td><td>" + projects[i][2] + "</td><td>"  + projects[i][3] + "</td><td>"+ projects[i][4] +"</td></tr>";		
+		content += "<tr><td headers='id'>" + i +"</td><td headers='name'><a href='mbc.php?id=" +  i  + "'>"+  projects[i][0] + "</a></td><td headers='description'>" + projects[i][1] + "</td><td headers='budget'>" + projects[i][2] + "</td><td headers='actual_expenditure'>"  + projects[i][3] + "</td><td headers='percentage_complete'>"+ projects[i][4] +"</td></tr>";		
 	}
 		
 	$("#SearchResults").empty(); // Clear the searchresults
@@ -120,12 +103,15 @@ It will allow the user to filter the projects. for instance by people working on
 By date , by budget, by over budget<br />
 
 We need paging for this page
+
 </div><!-- end of page_explanation -->
 
 <!-- <div id="SearchResult">
 </div> -->
 <style>
-#projects_table{width:80%; border-collapse:collapse;font-family:Arial, Helvetica, sans-serif;font-size:small;}
+#project_table{width:80%;font-family:Arial, Helvetica, sans-serif;font-size:small;
+
+}
 thead{color:white;padding: 5px 0 5px 10px;background-color: #6B6B6B;
     border-bottom: 1px solid #CCCCCC;
     border-collapse: collapse !important;
@@ -137,21 +123,52 @@ thead{color:white;padding: 5px 0 5px 10px;background-color: #6B6B6B;
 th{padding: 5px 0 5px 10px;text-align:left;}
 tr:nth-child(even){background:#F7F7F7;}
 td{padding: 5px 0 5px 10px;font-size:small;}
-#second_header{background-color: #E6E6E6;color:black;font-size:x-small;padding:10px 10px 10px 10px ;}
+#second_headers{background-color: #E6E6E6;color:black;font-size:x-small;padding:10px 10px 10px 10px ;}
+
+th,td{
+padding:10px;
+	border-right:1px solid #999;
+	border-bottom:1px solid #999;
+}
+#project_table{
+	border-top:1px solid #999;
+	border-left:1px solid #999;
+	 border-collapse:collapse
+	}
 </style>
-<table id="project_table"><thead><tr><th colspan="4">Project Profiles</th><th colspan="2">+ Add new project</th></tr>
-<tr id="second_header"><th>ID</th><th>Name</th><th>Description</th><th>Budget</th><th>Actual  Expenditure</th><th>Complete Date</th></tr>
+<table id="project_table" summary="This table shows all the projects for your account and summary information about each project"><thead><tr><th colspan="4">Project Profiles</th><th colspan="2">+ Add new project</th></tr>
+<tr id="second_headers"><th id="id">ID</th><th id="name">Name</th><th id="description">Description</th><th id="budget">Budget</th><th id="actual_expenditure">Actual  Expenditure</th><th id="percentage_complete">% complete</th></tr>
 </thead><tbody id="SearchResults">
 </tbody><!-- End of SearchResults -->
-<tfoot><tr id="second_header"><th>ID</th><th>Name</th><th>Description</th><th>Budget</th><th>Actual  Expenditure</th><th>Complete Date</th></tr></tfoot>
+<tfoot><tr id="second_headers"><th>ID</th><th>Name</th><th>Description</th><th>Budget</th><th>Actual  Expenditure</th><th>Complete Date</th></tr></tfoot>
 </table>
 <div id="Pagination" class="pagination">
 <!-- Here's where the links go -->
+<div id="filter">
 
+
+Client : <select id="select_client"><option>A Love Supreme</option><option>Ahmad Khoshnoudi</option><option>Life Media</option><option>Shaun Brogan</option></select>
+
+Workers<
+</div>
 
 
 </div><!-- End of Pagination -->
+<div id="improvements">
 
 
+No basis for comparison between projects so that we can 
+OK so there is no support for selecting projects.
+No basis for allocation of people and resources.
+No categorization of projects. <h2>Have we looked into the categorization of projects</h2>
+No companies as an account might be owned by someone working for more than one company.
+No way of departmentalizing projects.
+No way of <h2><a href="#prioritize">prioritizing projects</a></h2>
+
+ 
+</div>
+<div id="selection"><a name="selection"></a></div>
+<div id="categorization"><a name="categorization"></a></div>
+<div id="prioritizing projects"><a name="prioritize"></a></div>
 </body>
 </html>
